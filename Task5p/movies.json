@@ -1,0 +1,67 @@
+[
+{
+    "title": "Live Free or Die Hard",
+    "genre": "Action",
+    "year": 2007
+},
+{
+    "title": "James Bond 007",
+    "genre": "Action",
+    "year": 2020
+},
+{
+    "title": "Chinatown",
+    "genre": "Mystrey",
+    "year": 1974
+},
+{
+    "title": "The Sting",
+    "genre": "Crime",
+    "year": 1973
+},
+{
+    "title": "Election",
+    "genre": "Comedy",
+    "year": 1999
+},
+{
+    "title": "Avengers: Endgame",
+    "genre": "Action",
+    "year": 2019
+},
+{
+    "title": "Mission Impossible: Fallout",
+    "genre": "Action",
+    "year": 2018
+},
+{
+    "title": "Gone Girl",
+    "genre": "Mystery",
+    "year": 2014
+},
+{
+    "title": "Murder Mystery",
+    "genre": "Mystery",
+    "year": 2019
+},
+{
+    "title": "21 Jump Street",
+    "genre": "Comedy",
+    "year": 2012
+},
+{
+    "title": "Bridesmaids",
+    "genre": "Comedy",
+    "year": 2011
+},
+{
+    "title": "The Irishman",
+    "genre": "Crime",
+    "year": 2019
+},
+{
+    "title": "Baby Driver",
+    "genre": "Crime",
+    "year": 2017
+}
+]
