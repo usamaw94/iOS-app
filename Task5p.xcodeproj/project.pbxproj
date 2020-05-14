@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC5A4670246AC7A7003A73DD /* AddMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A466F246AC7A7003A73DD /* AddMovieViewController.swift */; };
+		CC5A4672246AC7B8003A73DD /* EditMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A4671246AC7B8003A73DD /* EditMovieViewController.swift */; };
 		CCA6F740245E4718009AA69F /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA6F73F245E4718009AA69F /* MovieCell.swift */; };
 		CCD31B89245C6E0500EE62D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD31B88245C6E0500EE62D6 /* AppDelegate.swift */; };
 		CCD31B8B245C6E0500EE62D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD31B8A245C6E0500EE62D6 /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC5A466F246AC7A7003A73DD /* AddMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewController.swift; sourceTree = "<group>"; };
+		CC5A4671246AC7B8003A73DD /* EditMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMovieViewController.swift; sourceTree = "<group>"; };
 		CCA6F73F245E4718009AA69F /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		CCD31B85245C6E0500EE62D6 /* Task5p.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task5p.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD31B88245C6E0500EE62D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				CCFF1956245E2CD5007EC7C8 /* Movie.swift */,
 				CCFF1958245E2E04007EC7C8 /* DataLoader.swift */,
 				CCA6F73F245E4718009AA69F /* MovieCell.swift */,
+				CC5A466F246AC7A7003A73DD /* AddMovieViewController.swift */,
+				CC5A4671246AC7B8003A73DD /* EditMovieViewController.swift */,
 			);
 			path = Task5p;
 			sourceTree = "<group>";
@@ -154,7 +160,9 @@
 				CCFF1959245E2E04007EC7C8 /* DataLoader.swift in Sources */,
 				CCD31B8B245C6E0500EE62D6 /* ViewController.swift in Sources */,
 				CCA6F740245E4718009AA69F /* MovieCell.swift in Sources */,
+				CC5A4670246AC7A7003A73DD /* AddMovieViewController.swift in Sources */,
 				CCD31B89245C6E0500EE62D6 /* AppDelegate.swift in Sources */,
+				CC5A4672246AC7B8003A73DD /* EditMovieViewController.swift in Sources */,
 				CCFF1957245E2CD5007EC7C8 /* Movie.swift in Sources */,
 				CCD31B91245C6E0500EE62D6 /* Task5p.xcdatamodeld in Sources */,
 			);

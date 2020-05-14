@@ -10,22 +10,29 @@ import Foundation
 
 class DataLoader  {
     
+    var fileLocation : URL?
+    
 //    var movies = [Movie]()
     
     
     
     func loadData() -> [Movie] {
-        guard let filePath = Bundle.main.url(forResource: "movies", withExtension: "json")else {return [Movie]()}
-            
-        do{
-            let data = try Data(contentsOf: filePath)
-            let jsonDecoder = JSONDecoder();
-            let jsonData = try jsonDecoder.decode([Movie].self, from: data)
-            return jsonData
+        let fileManager = FileManager.default
+        
+        fileLocation = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("movies.json")
+        
+        if(fileManager.fileExists(atPath: self.fileLocation?.path ?? "")){
+            do{
+                let data = try Data(contentsOf: self.fileLocation ?? fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0])
+                let jsonDecoder = JSONDecoder();
+                let jsonData = try jsonDecoder.decode([Movie].self, from: data)
+                return jsonData
+            }
+            catch{
+                print(error)
+            }
         }
-        catch{
-            print(error)
-        }
+        
         return [Movie]()
     }
     
@@ -58,4 +65,69 @@ class DataLoader  {
         }
         
     }
+    
+    func writeDataToFile(fileData: String){
+        let fileUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("movies.json")
+        print(fileUrl)
+        do {
+            try fileData.write(to: fileUrl, atomically: true, encoding: .utf8)
+        }
+        catch{
+            print(error)
+        }
+    }
+    
+    func jsonToString(movies : [Movie]){
+        let moviesList = movies
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        do {
+           let data = try encoder.encode(moviesList)
+            let jsonData = String(bytes: data, encoding: .utf8)
+            self.writeDataToFile(fileData: jsonData ?? "")
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    func deleteMovieItem(itemIndex : Int, isSearching : Bool, movies : [Movie], searchedResult: [Movie]) -> [Movie]{
+        var movieList = movies
+        if(isSearching){
+            for i in 0...movieList.count - 1 {
+                if(searchedResult[itemIndex].title == movieList[i].title){
+                    movieList.remove(at: i)
+                    jsonToString(movies: movieList)
+                    return movieList
+                }
+            }
+        }
+        else{
+            movieList.remove(at: itemIndex)
+            jsonToString(movies: movieList)
+            return movieList
+        }
+        return movieList
+    }
+    
+    func editMovieItem(itemIndex : Int, isSearching : Bool, movies : [Movie], movie : Movie, searchedResult : [Movie]) -> [Movie] {
+        var movieList = movies
+        if(isSearching){
+            for i in 0...movieList.count - 1 {
+                if(searchedResult[itemIndex].title == movieList[i].title) {
+                    movieList[i] = movie
+                    jsonToString(movies: movieList)
+                    return movieList
+                }
+            }
+        }
+        else{
+            movieList[itemIndex] = movie
+            jsonToString(movies: movieList)
+            return movieList
+        }
+        return movieList
+    }
+    
+    
 }

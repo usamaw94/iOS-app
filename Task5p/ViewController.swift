@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var searchedResult = [Movie]()
     
     var isSearching = false
+    var updateAtIndex = -1
     
     @IBOutlet weak var searchInput: UISearchBar!
     
@@ -37,6 +38,21 @@ class ViewController: UIViewController {
     @IBAction func sortByYear(_ sender: Any) {
         self.movies = dataLoader.sortByYear(movies: self.movies)
         self.movieTable.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "addMovie"){
+            let addVC = segue.destination as! AddMovieViewController
+            addVC.dataLoader = self.dataLoader
+            addVC.homeVC = self
+        }
+        else{
+            let editVC = segue.destination as! EditMovieViewController
+            editVC.currentIndex = self.updateAtIndex
+            editVC.dataLoader = self.dataLoader
+            editVC.homeVC = self
+        }
     }
     
 }
@@ -61,6 +77,29 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editFunction = UITableViewRowAction(style: .normal, title: "Update") { (rowAction, indexpath) in
+            self.updateAtIndex = indexPath.row
+            self.performSegue(withIdentifier: "UpdateMovieItem", sender: self)
+        }
+        editFunction.backgroundColor = UIColor.blue
+        
+        
+        let deleteFunction = UITableViewRowAction(style: .normal, title: "Remove") { (rowAction, indexpath) in
+            
+            self.movies = self.dataLoader.deleteMovieItem(itemIndex: indexPath.row, isSearching: self.isSearching, movies: self.movies, searchedResult: self.searchedResult)
+            self.movieTable.deleteRows(at: [indexPath], with: .fade)
+            self.movieTable.reloadData()
+        }
+        deleteFunction.backgroundColor = UIColor.red
+        
+        return [deleteFunction,editFunction]
     }
 }
 
